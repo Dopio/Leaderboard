@@ -1,0 +1,43 @@
+.student__wrapper {
+  display: flex;
+  width: 100%;
+  margin-bottom: 25px;
+}
+
+.student__rating {
+  display: flex;
+  justify-content: space-between;
+  background: #A6D3F3;
+  width: 100%;
+  padding: 15px 24px 15px 24px;
+  border-radius: 5px;
+}
+
+.avatar {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  margin-right: 20px;
+}
+
+.student__name {
+  font-family: 'Raleway';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 30px;
+  line-height: 35px;
+  color: #1E1E1E;
+
+}
+
+.student__points {
+  font-family: 'Raleway';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 27px;
+  line-height: 32px;
+}
+
+.points {
+  color: #FD841F;
+}
