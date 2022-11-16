@@ -1,7 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
+import { ModalWindow } from "../../ModalWindow/ModalWindow";
 import classes from './Header.module.css'
 
 export const Header = () => {
+
+  const [modalActive, setModalActive] = useState(true)
+
   return (
     <div className={classes.ratingTable__header}>
       <div className={classes.header_title}>
@@ -11,6 +15,7 @@ export const Header = () => {
       </div>
       <div className={classes.header_button_wrapper}>
         <button className={classes.header_button}>Войти как администратор</button>
+        <ModalWindow modalActive={modalActive} setModalActive={setModalActive} />
       </div>
     </div>
   )
