@@ -4,15 +4,18 @@ import classes from './ModalWindow.module.css'
 export const ModalWindow = ({ modalActive, setModalActive }) => {
   return (
     <div
-      className={classes.modaleWindow__wrapper}
-      onClick={() => setModalActive(false)}
+      className={modalActive
+        ? classes.modaleWindow__wrapper_active
+        : classes.modaleWindow__wrapper}
     >
       <div className={classes.modaleWindow__exitButton}>
-        <button className={classes.exitButton}>❌</button>
+        <button
+          className={classes.exitButton}
+          onClick={() => setModalActive(false)}
+        >❌</button>
       </div>
       <div
         className={classes.modaleWindow__content}
-        onClick={e => e.stopPropagation()}
       >
         <div className={classes.modaleWindow__body}>
           <div className={classes.modaleWindow__title}>
@@ -24,8 +27,8 @@ export const ModalWindow = ({ modalActive, setModalActive }) => {
             </div>
             <div className={classes.login__input}>
               <input
-              type="text"
-              className={classes.login}
+                type="text"
+                className={classes.login}
               />
             </div>
           </div>
@@ -34,14 +37,16 @@ export const ModalWindow = ({ modalActive, setModalActive }) => {
               Пароль
             </div>
             <div className={classes.password__input}>
-            <input
-              type="text"
-              className={classes.password}
+              <input
+                type="text"
+                className={classes.password}
               />
             </div>
           </div>
           <div className={classes.submit_button}>
-            <button className={classes.submit}>GO!</button>
+            <button
+              className={classes.submit}
+            >GO!</button>
           </div>
         </div>
       </div>

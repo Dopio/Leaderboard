@@ -4,7 +4,7 @@ import classes from './Header.module.css'
 
 export const Header = () => {
 
-  const [modalActive, setModalActive] = useState(true)
+  const [modalActive, setModalActive] = useState(false)
 
   return (
     <div className={classes.ratingTable__header}>
@@ -14,7 +14,10 @@ export const Header = () => {
         20.09.2022
       </div>
       <div className={classes.header_button_wrapper}>
-        <button className={classes.header_button}>Войти как администратор</button>
+        <button
+        className={classes.header_button}
+        onClick={() => setModalActive(true)}
+        >Войти как администратор</button>
         <ModalWindow modalActive={modalActive} setModalActive={setModalActive} />
       </div>
     </div>
