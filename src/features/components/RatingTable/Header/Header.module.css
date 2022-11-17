@@ -7,16 +7,13 @@
 }
 
 .header_title {
+  display: flex;
   font-family: 'Raleway';
   font-style: normal;
   font-weight: 400;
   font-size: 35px;
   line-height: 41px;
   color: #1E1E1E;
-}
-
-.competition_menu {
-  color: #FD841F;
 }
 
 .header_button {
@@ -33,4 +30,10 @@
   text-align: center;
   color: #FFFFFF;
   border: none;
+  transition-duration: 0.5s;
+}
+
+.header_button:hover {
+  color: #FD841F;
+  transition-duration: 0.2s;
 }

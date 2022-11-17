@@ -6,6 +6,7 @@
   top: 0;
   left: 0;
   transform: scale(0);
+  transition-duration: 0.5s;
 }
 
 .modaleWindow__wrapper_active{
@@ -16,6 +17,7 @@
   top: 0;
   left: 0;
   transform: scale(1);
+  transition-duration: 0.5s;
 }
 
 

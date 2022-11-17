@@ -1,22 +1,25 @@
 import React, { useState } from "react";
 import { ModalWindow } from "../../ModalWindow/ModalWindow";
 import classes from './Header.module.css'
+import { Menu } from "./Menu/Menu";
+
 
 export const Header = () => {
 
   const [modalActive, setModalActive] = useState(false)
 
+
+
   return (
     <div className={classes.ratingTable__header}>
       <div className={classes.header_title}>
         Рейтинг по теме
-        <span className={classes.competition_menu}> Параллепипед </span>
-        20.09.2022
+        <Menu />
       </div>
       <div className={classes.header_button_wrapper}>
         <button
-        className={classes.header_button}
-        onClick={() => setModalActive(true)}
+          className={classes.header_button}
+          onClick={() => setModalActive(true)}
         >Войти как администратор</button>
         <ModalWindow modalActive={modalActive} setModalActive={setModalActive} />
       </div>
