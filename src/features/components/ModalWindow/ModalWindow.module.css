@@ -74,9 +74,16 @@
   border: none;
   background: #A6D3F3;
   border-radius: 10px;
-  width: 650px;
+  width: 610px;
   height: 90px;
   margin-bottom: 30px;
+  font-family: 'Raleway';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 40px;
+  line-height: 47px;
+  color: black;
+  padding: 0px 20px 0px 20px;
 }
 
 .password__title {
@@ -92,9 +99,16 @@
   border: none;
   background: #A6D3F3;
   border-radius: 10px;
-  width: 650px;
+  width: 610px;
   height: 90px;
-  margin-bottom: 60px;
+  margin-bottom: 30px;
+  font-family: 'Raleway';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 40px;
+  line-height: 47px;
+  color: black;
+  padding: 0px 20px 0px 20px;
 }
 
 .submit {

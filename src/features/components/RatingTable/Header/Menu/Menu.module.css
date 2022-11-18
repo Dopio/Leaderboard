@@ -4,6 +4,10 @@
   color: #FD841F;
 }
 
+.menu__btn:hover{
+  cursor: pointer;
+}
+
 .menu__content{
   position: absolute;
   color: rgb(253, 132, 33);
