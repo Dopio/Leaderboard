@@ -33,7 +33,7 @@ const server = http.createServer((req, res) => {
 
   res.setHeader('Content-Type', 'text/html')
 
-  if (req.url = '/') {
+  if (req.url === '/') {
     fs.readFile('./public/index.html', (err, data) => {
       if (err) {
         console.log(err)
