@@ -28,12 +28,41 @@ app.post('/auth/login', async (req, res) => { //Вход для админист
     const user = await UserModel.findOne({ email: req.body.email })
 
     if (!user) {
-      return req.status(404).json({
+      return res.status(404).json({
         messege: 'Не удалось авторизоваться'
       })
     }
-  } catch (error) {
 
+    const isValidPass = await bcrypt.compare(req.body.password, user._doc.passwordHash)
+
+    if (!isValidPass) {
+      return res.status(400).json({
+        messege: 'Неверный логин или пароль'
+      })
+    }
+
+    const token = jwt.sign(  //если у пользователя есть токен, то этого хватит для дальнейших действий и выдачи прав
+      {
+        _id: user._id
+      },
+      'someSecret239',
+      {
+        expiresIn: '10y' //токен даётся на 10 лет
+      }
+    )
+
+    const { passwordHash, ...userData } = user._doc
+
+    res.json({
+      ...userData,
+      token
+    })
+
+  } catch (error) {
+    console.log(error)
+    res.status(500).json({
+      messege: 'Не удалось авторизоваться'
+    })
   }
 })
 
