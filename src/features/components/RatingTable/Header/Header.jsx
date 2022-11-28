@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { ModalWindow } from "../../ModalWindow/ModalWindow";
+import { ModalWindow } from "../../ModalWindow/ModalWindow.jsx";
 import classes from './Header.module.css'
-import { Menu } from "./Menu/Menu";
+import { Menu } from "./Menu/Menu.jsx";
 
 
 export const Header = () => {
