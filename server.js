@@ -7,6 +7,7 @@ import { validationResult } from 'express-validator'
 import { registerValidation } from './src/server/validations/authValid.js'
 
 import UserModel from './src/server/models/User.js'
+import checkAuth from './src/server/utils/checkAuth.js'
 
 
 const app = express() //создание сервера
@@ -29,7 +30,7 @@ app.post('/auth/login', async (req, res) => { //Вход для админист
 
     if (!user) {
       return res.status(404).json({
-        messege: 'Не удалось авторизоваться'
+        message: 'Не удалось авторизоваться'
       })
     }
 
@@ -37,7 +38,7 @@ app.post('/auth/login', async (req, res) => { //Вход для админист
 
     if (!isValidPass) {
       return res.status(400).json({
-        messege: 'Неверный логин или пароль'
+        message: 'Неверный логин или пароль'
       })
     }
 
@@ -61,7 +62,7 @@ app.post('/auth/login', async (req, res) => { //Вход для админист
   } catch (error) {
     console.log(error)
     res.status(500).json({
-      messege: 'Не удалось авторизоваться'
+      message: 'Не удалось авторизоваться'
     })
   }
 })
@@ -106,11 +107,31 @@ app.post('/auth/register', registerValidation, async (req, res) => { //Реги�
   } catch (error) {
     console.log(error)
     res.status(500).json({
-      messege: 'Регистрация не удалась'
+      message: 'Регистрация не удалась'
     })
   }
 })
 
+
+app.get('/auth/me', checkAuth, async (req, res) => {
+  try {
+    const user = await UserModel.findById(req.userId)
+    if (!user) {
+      return res.status(404).json({
+        message: 'Пользователь не найден'
+      })
+    }
+
+    const { passwordHash, ...userData } = user._doc
+
+    res.json(userData)
+  } catch (error) {
+    console.log(error)
+    res.status(500).json({
+      message: 'Нет доступа'
+    })
+  }
+})
 
 app.listen(PORT, 'localhost', (error) => {
   error ? console.log(error) : console.log(`listening port ${PORT}`)
