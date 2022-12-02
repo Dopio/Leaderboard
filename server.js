@@ -2,9 +2,11 @@ import express from 'express'
 import mongoose from 'mongoose'
 
 import { registerValidation } from './src/server/validations/authValid.js'
+import { loginValidation } from './src/server/validations/loginValid.js'
 
 import checkAuth from './src/server/utils/checkAuth.js'
 import * as UserController from './src/server/controllers/UserController.js'
+import handleValidationErrors from './src/server/utils/handleValidationErrors.js'
 
 
 const app = express() //создание сервера
@@ -21,8 +23,8 @@ mongoose
   .catch((err) => console.log(err))
 
 
-app.post('/auth/register', registerValidation, UserController.register)
-app.post('/auth/login', UserController.login)
+app.post('/auth/register', registerValidation, handleValidationErrors, UserController.register)
+app.post('/auth/login', loginValidation, handleValidationErrors, UserController.login)
 app.get('/auth/me', checkAuth, UserController.getMe)
 
 

@@ -9,7 +9,7 @@ import { LeaderBoardContainer } from './features/containers/LeaderBoardContainer
 export const App = () => {
   return (
     <Layout>
-      <LeaderBoardContainer />
+        <LeaderBoardContainer />
     </Layout>
   )
 }
