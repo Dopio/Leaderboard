@@ -1,7 +1,7 @@
 import React from "react";
 import classes from './ModalWindow.module.css'
 
-export const ModalWindow = ({ modalActive, setModalActive }) => {
+export const ModalWindow = ({ modalActive, setModalActive}) => {
   return (
     <div
       className={modalActive
@@ -46,7 +46,9 @@ export const ModalWindow = ({ modalActive, setModalActive }) => {
           <div className={classes.submit_button}>
             <button
               className={classes.submit}
-            >GO!</button>
+            >
+              GO!
+            </button>
           </div>
         </div>
       </div>

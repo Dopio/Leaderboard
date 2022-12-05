@@ -9,7 +9,7 @@ const competitionList = [
   "Квадрат 20.09.2022",
 ]
 
-export const Menu = () => {
+export const Menu = ({ admin, isAdmin }) => {
 
   const [competition, setCompetition] = useState(competitionList[0])
 
