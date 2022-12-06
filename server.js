@@ -33,7 +33,6 @@ app.get('/auth/me', checkAuth, UserController.getMe)
 
 
 
-
 app.get('/competitive/:id', CompetitiveController.getOne)
 app.post('/competitive',checkAuth, competitiveValidation, CompetitiveController.create)
 app.delete('/competitive/:id',checkAuth, CompetitiveController.remove)

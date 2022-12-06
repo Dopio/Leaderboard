@@ -1,15 +1,22 @@
-import axios from '../../../../redux/axios.js';
-import React, { useState } from "react";
-import { ModalWindow } from "../../ModalWindow/ModalWindow.jsx";
 import classes from './Header.module.css'
+import { useDispatch } from 'react-redux'
+import React, { useState } from "react";
+
+import { ModalWindow } from "../../ModalWindow/ModalWindow.jsx";
 import { Menu } from "./Menu/Menu.jsx";
+import { fetchCompetitives } from '../../../../redux/slices/competitive.js';
 
 
 export const Header = ({ admin, isAdmin }) => {
-
   const [modalActive, setModalActive] = useState(false)
 
-  axios.get('/auth/me')
+
+  const dispath = useDispatch()
+
+  React.useEffect(() => {
+    dispath(fetchCompetitives())
+  }, [])
+
 
   return (
     <div className={classes.ratingTable__header}>
