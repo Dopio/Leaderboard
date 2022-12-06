@@ -1,12 +1,16 @@
 import mongoose from 'mongoose'
 
 const CompetitiveSchema = new mongoose.Schema({
-  competitive: {
+  competitiveTitle: {
     type: String,
     required: true
   },
   competitiveData: {
-    type: Number
+    type: String
+  },
+  students: {
+    type: Array,
+    default: []
   }
 })
 

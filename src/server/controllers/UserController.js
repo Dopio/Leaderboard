@@ -1,7 +1,7 @@
 import jwt from 'jsonwebtoken' //Для авторизации
 import bcrypt from 'bcrypt'
 
-import UserModel from '../models/User.js'
+import UserModel from '../models/UserModel.js'
 
 
 export const register = async (req, res) => { //Регистрация администраторов

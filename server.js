@@ -4,9 +4,11 @@ import cors from 'cors'
 
 import { registerValidation } from './src/server/validations/authValid.js'
 import { loginValidation } from './src/server/validations/loginValid.js'
+import { competitiveValidation } from './src/server/validations/competitiveValid.js'
 
 import checkAuth from './src/server/utils/checkAuth.js'
 import * as UserController from './src/server/controllers/UserController.js'
+import * as CompetitiveController from './src/server/controllers/CompetitiveController.js'
 import handleValidationErrors from './src/server/utils/handleValidationErrors.js'
 
 
@@ -29,7 +31,12 @@ app.post('/auth/register', registerValidation, handleValidationErrors, UserContr
 app.post('/auth/login', loginValidation, handleValidationErrors, UserController.login)
 app.get('/auth/me', checkAuth, UserController.getMe)
 
-app.post('data/competitive')
+/* app.get('/competitive', СompetitiveController.getAll)
+app.get('/competitive/:id', СompetitiveController.getOne) */
+app.post('/competitive',checkAuth, competitiveValidation, CompetitiveController.create)
+/* app.delete('/competitive', СompetitiveController.remove)
+app.patch('/competitive', СompetitiveController.update)
+app.get('/competitive', СompetitiveController.getAll) */
 
 
 app.listen(PORT, 'localhost', (error) => {

@@ -2,8 +2,8 @@ import { createSlice } from "@reduxjs/toolkit"
 
 
 const initialState = {
-  competitives: {
-    items: [],
+  competitive: {
+    students: [],
     status: 'loading'
   }
 }
