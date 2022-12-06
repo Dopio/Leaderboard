@@ -1,5 +1,5 @@
 import classes from './Header.module.css'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import React, { useState } from "react";
 
 import { ModalWindow } from "../../ModalWindow/ModalWindow.jsx";
@@ -12,11 +12,13 @@ export const Header = ({ admin, isAdmin }) => {
 
 
   const dispath = useDispatch()
+  const {competitiveTitle, competitiveData} = useSelector(state => state.competitives)
 
   React.useEffect(() => {
     dispath(fetchCompetitives())
   }, [])
 
+console.log(competitiveTitle)
 
   return (
     <div className={classes.ratingTable__header}>
