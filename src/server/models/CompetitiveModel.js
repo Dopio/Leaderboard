@@ -8,9 +8,11 @@ const CompetitiveSchema = new mongoose.Schema({
   competitiveData: {
     type: String
   },
-  students: {
-    type: Array,
-    default: []
+  studentName: {
+    type: String
+  },
+  studentPoints: {
+    type: Number
   }
 })
 

@@ -31,12 +31,14 @@ app.post('/auth/register', registerValidation, handleValidationErrors, UserContr
 app.post('/auth/login', loginValidation, handleValidationErrors, UserController.login)
 app.get('/auth/me', checkAuth, UserController.getMe)
 
-/* app.get('/competitive', СompetitiveController.getAll)
-app.get('/competitive/:id', СompetitiveController.getOne) */
+
+
+
+app.get('/competitive/:id', CompetitiveController.getOne)
 app.post('/competitive',checkAuth, competitiveValidation, CompetitiveController.create)
-/* app.delete('/competitive', СompetitiveController.remove)
-app.patch('/competitive', СompetitiveController.update)
-app.get('/competitive', СompetitiveController.getAll) */
+app.delete('/competitive/:id',checkAuth, CompetitiveController.remove)
+app.patch('/competitive/:id',checkAuth, competitiveValidation, CompetitiveController.update)
+
 
 
 app.listen(PORT, 'localhost', (error) => {
