@@ -24,9 +24,21 @@ export const ModalWindow = ({ modalActive, setModalActive, isAuth }) => {
   })
 
 
-  const onSubmit = (values) => {
-    dispath(fetcAuth(values))
+  const onSubmit = async (values) => {
+    const data = await dispath(fetcAuth(values))
+    console.log(data)
+
+    if (!data.payload) {
+      return alert('Не удалось авторизоваться')
+    }
+
+    if ('token' in data.payload) { //Сохранение токена в localStorage
+      window.localStorage.setItem('token', data.payload.token)
+    }
   }
+
+
+
 
   return (
     <div

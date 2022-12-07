@@ -17,6 +17,8 @@ export const Header = () => {
 
   const onClickLogout = () => {
     dispath(logout())
+    window.localStorage.removeItem('token')
+    setModalActive(false)
   }
 
   const { competitiveTitle, competitiveData } = useSelector(state => state.competitives)
