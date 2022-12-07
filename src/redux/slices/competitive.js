@@ -16,7 +16,7 @@ const initialState = {
 const competitivesSlice = createSlice({
   name: 'competitives',
   initialState,
-  reducer: {},
+  reducers: {},
   extraReducers: {
     [fetchCompetitives.pending]: (state) => { //Отлавливание состояния при загрузке
       state.competitive.items = []

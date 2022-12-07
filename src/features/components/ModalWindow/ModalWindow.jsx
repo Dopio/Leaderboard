@@ -1,7 +1,33 @@
 import React from "react";
 import classes from './ModalWindow.module.css'
 
-export const ModalWindow = ({ modalActive, setModalActive}) => {
+import { useForm } from 'react-hook-form'
+import { useDispatch } from "react-redux";
+import { fetcAuth } from "../../../redux/slices/auth";
+
+
+export const ModalWindow = ({ modalActive, setModalActive, isAuth }) => {
+
+  const dispath = useDispatch()
+
+  const {
+    register,
+    handleSubmit,
+    /* setError,
+    formState: { errors, isValid } */
+  } = useForm({
+    defaultValues: {
+      email: 'ksenia@test.ru',
+      password: 'kek322'
+    },
+    mode: 'onChange'
+  })
+
+
+  const onSubmit = (values) => {
+    dispath(fetcAuth(values))
+  }
+
   return (
     <div
       className={modalActive
@@ -14,42 +40,45 @@ export const ModalWindow = ({ modalActive, setModalActive}) => {
           onClick={() => setModalActive(false)}
         >❌</button>
       </div>
-      <div
-        className={classes.modaleWindow__content}
-      >
+      <div className={classes.modaleWindow__content}>
         <div className={classes.modaleWindow__body}>
           <div className={classes.modaleWindow__title}>
             Авторизация
           </div>
-          <div className={classes.modaleWindow__login}>
-            <div className={classes.login__title}>
-              Логин
+          <form onSubmit={handleSubmit(onSubmit)}>
+            <div className={classes.modaleWindow__login}>
+              <div className={classes.login__title}>
+                Логин
+              </div>
+              <div className={classes.login__input}>
+                <input
+                  type="email"
+                  className={classes.login}
+                  {...register('email', { required: 'Укажите почту' })}
+                />
+              </div>
             </div>
-            <div className={classes.login__input}>
-              <input
-                type="text"
-                className={classes.login}
-              />
+            <div className={classes.modaleWindow__password}>
+              <div className={classes.password__title}>
+                Пароль
+              </div>
+              <div className={classes.password__input}>
+                <input
+                  type="password"
+                  className={classes.password}
+                  {...register('password', { required: 'Укажите пароль' })}
+                />
+              </div>
             </div>
-          </div>
-          <div className={classes.modaleWindow__password}>
-            <div className={classes.password__title}>
-              Пароль
+            <div className={classes.submit_button}>
+              <button
+                className={classes.submit}
+                type="submit"
+              >
+                GO!
+              </button>
             </div>
-            <div className={classes.password__input}>
-              <input
-                type="text"
-                className={classes.password}
-              />
-            </div>
-          </div>
-          <div className={classes.submit_button}>
-            <button
-              className={classes.submit}
-            >
-              GO!
-            </button>
-          </div>
+          </form>
         </div>
       </div>
     </div>

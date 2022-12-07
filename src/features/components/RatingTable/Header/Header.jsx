@@ -5,33 +5,40 @@ import React, { useState } from "react";
 import { ModalWindow } from "../../ModalWindow/ModalWindow.jsx";
 import { Menu } from "./Menu/Menu.jsx";
 import { fetchCompetitives } from '../../../../redux/slices/competitive.js';
+import { logout, selectIsAuth } from '../../../../redux/slices/auth';
 
 
-export const Header = ({ admin, isAdmin }) => {
+export const Header = () => {
+  const isAuth = useSelector(selectIsAuth)
+  const dispath = useDispatch()
+
   const [modalActive, setModalActive] = useState(false)
 
 
-  const dispath = useDispatch()
-  const {competitiveTitle, competitiveData} = useSelector(state => state.competitives)
+  const onClickLogout = () => {
+    dispath(logout())
+  }
+
+  const { competitiveTitle, competitiveData } = useSelector(state => state.competitives)
 
   React.useEffect(() => {
     dispath(fetchCompetitives())
   }, [])
 
-console.log(competitiveTitle)
+  console.log(competitiveTitle)
 
   return (
     <div className={classes.ratingTable__header}>
       <div className={classes.header_title}>
         Рейтинг по теме
-        <Menu admin={admin} isAdmin={isAdmin} />
+        <Menu />
       </div>
       <div className={classes.header_button_wrapper}>
-        {admin ?
+        {isAuth ?
           <div className={classes.header_unLoggin_button}>
             <button
               className={classes.header_button}
-              onClick={() => isAdmin(false)}
+              onClick={(onClickLogout)}
             >Разлогиниться</button>
           </div>
           :
@@ -44,6 +51,7 @@ console.log(competitiveTitle)
             <ModalWindow
               modalActive={modalActive}
               setModalActive={setModalActive}
+              isAuth={isAuth}
             />
           </>}
 
