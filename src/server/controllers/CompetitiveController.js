@@ -2,16 +2,11 @@ import CompetitiveModel from "../models/CompetitiveModel.js"
 
 export const create = async (req, res) => { //Создание соревнования
   try {
-    const doc = new CompetitiveModel({
-      competitiveTitle: req.body.competitiveTitle,
-      competitiveData: req.body.competitiveData,
-      studentName: req.body.studentName,
-      studentPoints: req.body.studentPoints,
-      user: req.userId
-    })
+    
+    let newCompetitive = new CompetitiveModel(req.body)
+    let savedCompetitive = await newCompetitive.save()
 
-    const competitive = await doc.save()
-    res.json(competitive)
+    res.json(savedCompetitive)
 
   } catch (error) {
     console.log("Вот что за ошибка!!!!", error)

@@ -14,7 +14,7 @@ export const App = () => {
   const isAuth = useSelector(selectIsAuth)
 
   React.useEffect(() => {
-    dispath(fetcAuthMe())
+    dispath(fetcAuthMe(isAuth))
   }, [])
 
   return (

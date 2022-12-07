@@ -1,4 +1,4 @@
-import mongoose from 'mongoose'
+import mongoose, { Schema } from 'mongoose'
 
 const CompetitiveSchema = new mongoose.Schema({
   competitiveTitle: {
@@ -6,14 +6,15 @@ const CompetitiveSchema = new mongoose.Schema({
     required: true
   },
   competitiveData: {
-    type: String
+    type: String,
+    default: ''
   },
-  studentName: {
-    type: String
-  },
-  studentPoints: {
-    type: Number
-  }
+  students: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: 'Students'
+    }
+  ]
 })
 
 export default mongoose.model('Competitive', CompetitiveSchema)

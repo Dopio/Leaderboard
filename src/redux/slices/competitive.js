@@ -8,7 +8,7 @@ export const fetchCompetitives = createAsyncThunk('/competitive/fetchCompetitive
 
 const initialState = {
   competitive: {
-    students: [],
+    students: {},
     status: 'loading'
   }
 }
