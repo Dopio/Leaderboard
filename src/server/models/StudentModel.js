@@ -11,8 +11,8 @@ const StudentSchema = new mongoose.Schema({
   },
   owner: {
     type: Schema.Types.ObjectId,
-    ref: "Competitive"
+    ref: "competitive"
   }
 })
 
-export default mongoose.model('Students', StudentSchema)
+export default mongoose.model('student', StudentSchema)

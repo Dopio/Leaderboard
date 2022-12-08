@@ -9,6 +9,7 @@ import { competitiveValidation } from './src/server/validations/competitiveValid
 import checkAuth from './src/server/utils/checkAuth.js'
 import * as UserController from './src/server/controllers/UserController.js'
 import * as CompetitiveController from './src/server/controllers/CompetitiveController.js'
+import * as StudentController from './src/server/controllers/StudentController.js'
 import handleValidationErrors from './src/server/utils/handleValidationErrors.js'
 
 
@@ -26,18 +27,23 @@ mongoose
   .then(() => console.log('Connected to DB'))
   .catch((err) => console.log(err))
 
-
+//Администратор
 app.post('/auth/register', registerValidation, handleValidationErrors, UserController.register)
 app.post('/auth/login', loginValidation, handleValidationErrors, UserController.login)
 app.get('/auth/me', checkAuth, UserController.getMe)
 
-
-
+//Соревнования
 app.get('/competitive/:id', CompetitiveController.getOne)
-app.post('/competitive',checkAuth, competitiveValidation, CompetitiveController.create)
-app.delete('/competitive/:id',checkAuth, CompetitiveController.remove)
-app.patch('/competitive/:id',checkAuth, competitiveValidation, CompetitiveController.update)
+app.get('/competitive', CompetitiveController.getAll)
+app.post('/competitive', checkAuth, competitiveValidation, CompetitiveController.create)
+app.delete('/competitive/:id', checkAuth, CompetitiveController.remove)
+app.patch('/competitive/:id', checkAuth, competitiveValidation, CompetitiveController.update)
 
+//Ученик
+app.get('/competitive/:id/student', StudentController.getAll)
+app.post('/competitive/:id/student', checkAuth, StudentController.create)
+/* app.delete('/competitive/:id/student/:id', checkAuth, StudentController.remove)
+app.patch('/competitive/:id/student/:id', checkAuth, StudentController.update) */
 
 
 app.listen(PORT, 'localhost', (error) => {

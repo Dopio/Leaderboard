@@ -11,10 +11,10 @@ const CompetitiveSchema = new mongoose.Schema({
   },
   students: [
     {
-      type: Schema.Types.ObjectId,
-      ref: 'Students'
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'student'
     }
   ]
 })
 
-export default mongoose.model('Competitive', CompetitiveSchema)
+export default mongoose.model('competitive', CompetitiveSchema)

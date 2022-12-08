@@ -1,6 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit'
-import { competitivesReducer } from './slices/competitive.js'
-import { authReducer } from './slices/auth.js'
+import { competitivesReducer } from './slices/competitiveSlice.js'
+import { authReducer } from './slices/authSlice.js'
 
 
 const store = configureStore({

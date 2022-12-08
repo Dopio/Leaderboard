@@ -6,7 +6,7 @@ import 'reset-css/reset.css'
 import { Layout } from './Layout/Layout.jsx'
 import { LeaderBoardContainer } from './features/containers/LeaderBoardContainer/LeaderBoardContainer.jsx'
 import { useDispatch, useSelector } from 'react-redux'
-import { fetcAuthMe, selectIsAuth } from './redux/slices/auth.js'
+import { fetcAuthMe, selectIsAuth } from './redux/slices/authSlice.js'
 
 export const App = () => {
 

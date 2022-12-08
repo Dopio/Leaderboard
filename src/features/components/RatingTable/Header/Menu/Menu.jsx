@@ -3,15 +3,16 @@ import React, { useState } from 'react'
 import classes from './Menu.module.css'
 
 
-const competitionList = [
+/* const competitionList = [
   "Параллепипед 13.05.2021",
   "Треугольник 3.09.207",
   "Квадрат 20.09.2022",
-]
+] */
 
-export const Menu = ({ admin, isAdmin }) => {
+export const Menu = ({ competitives }) => {
+  /* const [firstCompetitiveTitle] = competitives.items */
 
-  const [competition, setCompetition] = useState(competitionList[0])
+  const [competition, setCompetition] = useState(/* firstCompetitiveTitle.competitiveTitle */'aa')
 
   const [active, setActive] = useState(false)
 
@@ -29,13 +30,13 @@ export const Menu = ({ admin, isAdmin }) => {
       </button>
       {active && (
         <div className={classes.menu__content}>
-          {competitionList.map(competition =>
+          {competitives.items.map((obj, index) =>
             <div
-              key={competition}
+              key={obj._id}
               className={classes.menu__brand}
-              onClick={() => { competitionHandler(competition) }}
+              onClick={() => { competitionHandler(obj.competitiveTitle) }}
             >
-              {competition}
+              {obj.competitiveTitle}
             </div>
           )}
         </div>

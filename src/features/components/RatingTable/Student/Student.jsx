@@ -2,9 +2,7 @@ import React from "react";
 import classes from './Student.module.css'
 import serGay from '../../../../img/sergay.jpg'
 
-export const Student = () => {
-
-  let rating = 74;
+export const Student = ({rating}) => {
 
   return (
     <div className={classes.student__wrapper}>

@@ -1,29 +1,70 @@
-import CompetitiveModel from "../models/CompetitiveModel.js"
+import StudentModel from "../models/StudentModel.js"
 
 export const create = async (req, res) => { //Создание соревнования
   try {
     
-    let newCompetitive = new CompetitiveModel(req.body)
-    let savedCompetitive = await newCompetitive.save()
-    res.json(savedCompetitive)
+    let newStudent = new StudentModel(req.body)
+    let savedStudent = await newStudent.save()
+
+    res.json(savedStudent)
 
   } catch (error) {
     console.log("Вот что за ошибка!!!!", error)
     res.status(500).json({
-      message: 'Не удалось создать соревнование'
+      message: 'Не удалось создать ученика'
     })
   }
 }
 
-export const getAll = async (req, res) => { //Получение соревнования
+export const getAll = async (req, res) => { //Получение всех студентов
   try {
-    const competitives = await CompetitiveModel.find()
+    const studentId = req.params.id
 
-    res.json(competitives)
+    const foundCompetitive = await StudentModel
+    .find({_id: studentId})
+    .populate('student')
+
+    res.json(foundCompetitive)
+
+
     } catch (error) {
     console.log(error)
     res.status(500).json({
-      message: 'Не удалось получить соревнования'
+      message: 'Не удалось получить учеников'
+    })
+  }
+}
+
+/* export const getAll = async (req, res) => { //Получение соревнования
+  try {
+    const competitiveId = req.params.id
+
+    CompetitiveModel.findOne({
+      _id: competitiveId
+    },
+      (error, doc) => {
+
+        if (error) {
+          console.log(error)
+          return res.status(500).json({
+            message: 'Не удалось вернуть соревнование'
+          })
+        }
+
+        if (!doc) {
+          return res.status(404).json({
+            message: 'Соревнование не найдено!'
+          })
+        }
+
+        res.json(doc)
+      }
+    )
+
+  } catch (error) {
+    console.log(error)
+    res.status(404).json({
+      message: 'Соревнование не найдено!'
     })
   }
 }
@@ -123,4 +164,4 @@ export const update = async (req, res) => { //Редактирование со�
       message: 'Не удалось обновить соревнование'
     })
   }
-}
+} */

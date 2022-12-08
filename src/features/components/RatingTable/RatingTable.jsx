@@ -4,16 +4,16 @@ import classes from '../../containers/LeaderBoardContainer/LeaderBoardContainer.
 import { Header } from "./Header/Header";
 import { Student } from "./Student/Student";
 
-export const RatingTable = ({ admin, isAdmin }) => {
+export const RatingTable = ({ competitives }) => {
     return (
         <div className={classes.whiteBox}>
-        <div className={classes.ratingTable__wrapper}>
-            <Header admin={admin} isAdmin={isAdmin} />
-            <Student />
-            <Student />
-            <Student />
+            <div className={classes.ratingTable__wrapper}>
+                <Header competitives={competitives} />
+                <Student rating={89} />
+                <Student rating={67} />
+                <Student rating={16} />
 
-        </div>
+            </div>
         </div>
     )
 }

@@ -3,10 +3,10 @@ import classes from './ModalWindow.module.css'
 
 import { useForm } from 'react-hook-form'
 import { useDispatch } from "react-redux";
-import { fetcAuth } from "../../../redux/slices/auth";
+import { fetcAuth } from "../../../redux/slices/authSlice";
 
 
-export const ModalWindow = ({ modalActive, setModalActive, isAuth }) => {
+export const ModalWindow = ({ modalActive, setModalActive }) => {
 
   const dispath = useDispatch()
 
@@ -29,15 +29,13 @@ export const ModalWindow = ({ modalActive, setModalActive, isAuth }) => {
     console.log(data)
 
     if (!data.payload) {
-      return alert('Не удалось авторизоваться')
+      return alert('Неудалось авторизоваться')
     }
 
     if ('token' in data.payload) { //Сохранение токена в localStorage
       window.localStorage.setItem('token', data.payload.token)
     }
   }
-
-
 
 
   return (
