@@ -20,18 +20,13 @@
 }
 
 .student__name {
-  font-family: 'Raleway';
-  font-style: normal;
   font-weight: 400;
   font-size: 30px;
   line-height: 35px;
-  color: #1E1E1E;
 
 }
 
 .student__points {
-  font-family: 'Raleway';
-  font-style: normal;
   font-weight: 600;
   font-size: 27px;
   line-height: 32px;

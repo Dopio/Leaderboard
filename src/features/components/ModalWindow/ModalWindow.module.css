@@ -1,4 +1,8 @@
+@import url(https://fonts.googleapis.com/css?family=Raleway:regular,500,600,700);
+
 .modaleWindow__wrapper {
+  font-size: 40px;
+  line-height: 47px;
   position: fixed;
   height: 100vh;
   width: 100vw;
@@ -9,7 +13,7 @@
   transition-duration: 0.5s;
 }
 
-.modaleWindow__wrapper_active{
+.modaleWindow__wrapper_active {
   position: fixed;
   height: 100vh;
   width: 100vw;
@@ -35,9 +39,6 @@
 }
 
 .exitButton {
-  font-family: 'Raleway';
-  font-style: normal;
-  font-weight: 400;
   font-size: 30px;
   line-height: 35px;
   background: #FFFFFF;
@@ -45,6 +46,7 @@
 }
 
 .modaleWindow__body {
+  font-size: 40px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -52,9 +54,7 @@
 }
 
 .modaleWindow__title {
-  font-family: 'Raleway';
-  font-style: normal;
-  font-weight: 400;
+
   font-size: 60px;
   line-height: 70px;
   margin-bottom: 60px;
@@ -62,10 +62,6 @@
 }
 
 .login__title {
-  font-family: 'Raleway';
-  font-style: normal;
-  font-weight: 400;
-  font-size: 40px;
   line-height: 47px;
   color: #FFFFFF;
 }
@@ -77,20 +73,11 @@
   width: 610px;
   height: 90px;
   margin-bottom: 30px;
-  font-family: 'Raleway';
-  font-style: normal;
-  font-weight: 400;
-  font-size: 40px;
-  line-height: 47px;
-  color: black;
+
   padding: 0px 20px 0px 20px;
 }
 
 .password__title {
-  font-family: 'Raleway';
-  font-style: normal;
-  font-weight: 400;
-  font-size: 40px;
   line-height: 47px;
   color: #FFFFFF;
 }
@@ -102,23 +89,16 @@
   width: 610px;
   height: 90px;
   margin-bottom: 30px;
-  font-family: 'Raleway';
-  font-style: normal;
-  font-weight: 400;
-  font-size: 40px;
-  line-height: 47px;
-  color: black;
+
+
   padding: 0px 20px 0px 20px;
 }
 
 .submit {
-  font-family: 'Raleway';
-font-style: normal;
-font-weight: 700;
-font-size: 40px;
-line-height: 47px;
-text-align: center;
-color: #FFFFFF;
+  font-weight: 700;
+  text-align: center;
+  color: #FFFFFF;
+
   width: 650px;
   height: 60px;
   background: #FD841F;
