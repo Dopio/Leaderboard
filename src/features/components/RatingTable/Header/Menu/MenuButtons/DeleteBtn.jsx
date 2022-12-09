@@ -16,7 +16,7 @@ export const DeleteBtn = ({objId}) => {
   return (
     <button
       className={clsx(classes.button, classes.touch, classes.delete)}
-      onClick={onClickRemove(objId)}
+      /* onClick={onClickRemove(objId)} */
     />
   )
 }
