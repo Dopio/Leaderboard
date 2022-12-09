@@ -1,17 +1,16 @@
 import React, { useState } from 'react'
+import { useSelector } from 'react-redux'
+import { selectIsAuth } from '../../../../../redux/slices/authSlice'
 
 import classes from './Menu.module.css'
+import { DeleteBtn } from './MenuButtons/DeleteBtn.jsx'
+import { EditBtn } from './MenuButtons/EditBtn'
 
-
-/* const competitionList = [
-  "Параллепипед 13.05.2021",
-  "Треугольник 3.09.207",
-  "Квадрат 20.09.2022",
-] */
 
 export const Menu = ({ competitives }) => {
-  /* const [firstCompetitiveTitle] = competitives.items */
+  const isAuth = useSelector(selectIsAuth)
 
+  /* const [firstCompetitiveTitle] = competitives.items */
   const [competition, setCompetition] = useState(/* firstCompetitiveTitle.competitiveTitle */'aa')
 
   const [active, setActive] = useState(false)
@@ -36,7 +35,25 @@ export const Menu = ({ competitives }) => {
               className={classes.menu__brand}
               onClick={() => { competitionHandler(obj.competitiveTitle) }}
             >
-              {obj.competitiveTitle}
+              <div className={classes.comtetition_wrapper}>
+                <div className={classes.comtetition_title}>
+                  {obj.competitiveTitle}
+                </div>
+                <div className={classes.comtetition_data}>
+                  {obj.competitiveData}
+                </div>
+                {isAuth ?
+                  <>
+                    <div className={classes.edit_button}>
+                      <EditBtn />
+                    </div>
+                    <div className={classes.delete_button}>
+                      <DeleteBtn objId={obj._id} />
+                    </div>
+                  </> : <></>
+                }
+
+              </div>
             </div>
           )}
         </div>

@@ -17,3 +17,19 @@
   border: 1px solid rgba(253, 132, 33, 0.6);
   cursor: pointer;
 }
+
+.comtetition_wrapper{
+  display: flex;
+}
+
+.comtetition_title{
+  margin-right: 15px;
+}
+
+.comtetition_data{
+  margin-right: 15px;
+}
+
+.edit_button{
+  margin-right: 5px;
+}
