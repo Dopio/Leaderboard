@@ -6,7 +6,6 @@ import classes from './Menu.module.css'
 import { DeleteBtn } from './MenuButtons/DeleteBtn.jsx'
 import { EditBtn } from './MenuButtons/EditBtn'
 
-
 export const Menu = ({ competitives }) => {
   const isAuth = useSelector(selectIsAuth)
 
@@ -42,15 +41,16 @@ export const Menu = ({ competitives }) => {
                 <div className={classes.comtetition_data}>
                   {obj.competitiveData}
                 </div>
-                {isAuth ?
-                  <>
+                {isAuth
+                  ? <>
                     <div className={classes.edit_button}>
                       <EditBtn />
                     </div>
                     <div className={classes.delete_button}>
                       <DeleteBtn objId={obj._id} />
                     </div>
-                  </> : <></>
+                  </>
+                  : <></>
                 }
 
               </div>

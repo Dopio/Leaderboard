@@ -1,13 +1,11 @@
-import React from "react";
-import { useState } from "react";
+import React, { useState } from 'react'
+
 import axios from '../../../../redux/axios.js'
 import classes from '../../../containers/LeaderBoardContainer/LeaderBoardContainer.module.css'
 
 export const AddCompetition = () => {
-
   const [competitiveTitle, setСompetitiveTitle] = useState('')
   const [competitiveData, setСompetitiveData] = useState('')
-
 
   const onSubmit = async () => {
     try {
@@ -21,7 +19,6 @@ export const AddCompetition = () => {
     } catch (error) {
       console.warn(error)
       alert('Ошибка при создании соревнования')
-
     }
   }
 
@@ -50,7 +47,7 @@ export const AddCompetition = () => {
         </div>
       </div>
 
-      {/*<button
+      {/* <button
         className={classes.blueBtn}
         onChange={() => { }}
         onClick={() => { }}

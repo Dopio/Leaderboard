@@ -11,7 +11,7 @@ const StudentSchema = new mongoose.Schema({
   },
   owner: {
     type: Schema.Types.ObjectId,
-    ref: "competitive"
+    ref: 'competitive'
   }
 })
 

@@ -1,14 +1,13 @@
-import jwt from 'jsonwebtoken' //Для авторизации
+import jwt from 'jsonwebtoken'
 import bcrypt from 'bcrypt'
 
 import UserModel from '../models/UserModel.js'
 
-
-export const register = async (req, res) => { //Регистрация администраторов
+export const register = async (req, res) => { // Регистрация администраторов
   try {
     const password = req.body.password
     const salt = await bcrypt.genSalt(10)
-    const hash = await bcrypt.hash(password, salt) //Шифрование пароля
+    const hash = await bcrypt.hash(password, salt) // Шифрование пароля
 
     const doc = new UserModel({
       email: req.body.email,
@@ -18,13 +17,13 @@ export const register = async (req, res) => { //Регистрация адми�
 
     const user = await doc.save()
 
-    const token = jwt.sign(  //если у пользователя есть токен, то этого хватит для дальнейших действий и выдачи прав
+    const token = jwt.sign( // если у пользователя есть токен, то этого хватит для дальнейших действий и выдачи прав
       {
         _id: user._id
       },
       'someSecret239',
       {
-        expiresIn: '10y' //токен даётся на 10 лет
+        expiresIn: '10y' // токен даётся на 10 лет
       }
     )
 
@@ -42,7 +41,7 @@ export const register = async (req, res) => { //Регистрация адми�
   }
 }
 
-export const login = async (req, res) => { //Вход для администратора
+export const login = async (req, res) => { // Вход для администратора
   try {
     const user = await UserModel.findOne({ email: req.body.email })
 
@@ -60,13 +59,13 @@ export const login = async (req, res) => { //Вход для администр�
       })
     }
 
-    const token = jwt.sign(  //если у пользователя есть токен, то этого хватит для дальнейших действий и выдачи прав
+    const token = jwt.sign( // если у пользователя есть токен, то этого хватит для дальнейших действий и выдачи прав
       {
         _id: user._id
       },
       'someSecret239',
       {
-        expiresIn: '10y' //токен даётся на 10 лет
+        expiresIn: '10y' // токен даётся на 10 лет
       }
     )
 
@@ -76,7 +75,6 @@ export const login = async (req, res) => { //Вход для администр�
       ...userData,
       token
     })
-
   } catch (error) {
     console.log(error)
     res.status(500).json({
@@ -85,7 +83,7 @@ export const login = async (req, res) => { //Вход для администр�
   }
 }
 
-export const getMe = async (req, res) => { //Получение данных о себе
+export const getMe = async (req, res) => { // Получение данных о себе
   try {
     const user = await UserModel.findById(req.userId)
     if (!user) {

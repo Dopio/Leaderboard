@@ -1,18 +1,16 @@
-import React from "react";
+import React from 'react'
 import classes from './ModalWindow.module.css'
 
 import { useForm } from 'react-hook-form'
-import { useDispatch } from "react-redux";
-import { fetcAuth } from "../../../redux/slices/authSlice";
-
+import { useDispatch } from 'react-redux'
+import { fetcAuth } from '../../../redux/slices/authSlice'
 
 export const ModalWindow = ({ modalActive, setModalActive }) => {
-
   const dispath = useDispatch()
 
   const {
     register,
-    handleSubmit,
+    handleSubmit
     /* setError,
     formState: { errors, isValid } */
   } = useForm({
@@ -23,7 +21,6 @@ export const ModalWindow = ({ modalActive, setModalActive }) => {
     mode: 'onChange'
   })
 
-
   const onSubmit = async (values) => {
     const data = await dispath(fetcAuth(values))
     console.log(data)
@@ -32,11 +29,10 @@ export const ModalWindow = ({ modalActive, setModalActive }) => {
       return alert('Неудалось авторизоваться')
     }
 
-    if ('token' in data.payload) { //Сохранение токена в localStorage
+    if ('token' in data.payload) { // Сохранение токена в localStorage
       window.localStorage.setItem('token', data.payload.token)
     }
   }
-
 
   return (
     <div

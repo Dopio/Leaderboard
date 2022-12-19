@@ -1,11 +1,11 @@
-import React from "react";
+import React from 'react'
 import classes from '../../containers/LeaderBoardContainer/LeaderBoardContainer.module.css'
 
-import { Header } from "./Header/Header";
-import { Student } from "./Student/Student";
+import { Header } from './Header/Header'
+import { Student } from './Student/Student'
 
 export const RatingTable = ({ competitives }) => {
-    return (
+  return (
         <div className={classes.whiteBox}>
             <div className={classes.ratingTable__wrapper}>
                 <Header competitives={competitives} />
@@ -15,5 +15,5 @@ export const RatingTable = ({ competitives }) => {
 
             </div>
         </div>
-    )
+  )
 }

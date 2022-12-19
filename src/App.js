@@ -9,7 +9,6 @@ import { useDispatch, useSelector } from 'react-redux'
 import { fetcAuthMe, selectIsAuth } from './redux/slices/authSlice.js'
 
 export const App = () => {
-
   const dispath = useDispatch()
   const isAuth = useSelector(selectIsAuth)
 
