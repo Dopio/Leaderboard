@@ -1,7 +1,7 @@
 import { Sequelize, DataTypes } from 'sequelize'
 
 export default async () => {
-  const sequelize = new Sequelize('postgres://hvoya:hvoya@localhost:12345/leaders')
+  const sequelize = new Sequelize('postgres://postgres:dgesika007@localhost:5555/leaders')
 
   const User = sequelize.define('User', {
     fullName: {

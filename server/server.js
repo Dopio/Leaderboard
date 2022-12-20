@@ -10,7 +10,7 @@ const app = express() // создание сервера
 app.use(express.json()) // Учим express читать Json
 app.use(cors())
 
-const PORT = 5555
+const PORT = 4444
 
 const db = await initDb()
 
