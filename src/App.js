@@ -7,6 +7,7 @@ import { Layout } from './Layout/Layout.jsx'
 import { LeaderBoardContainer } from './features/containers/LeaderBoardContainer/LeaderBoardContainer.jsx'
 import { useDispatch, useSelector } from 'react-redux'
 import { fetcAuthMe, selectIsAuth } from './redux/slices/authSlice.js'
+import { Route, Routes } from 'react-router-dom'
 
 export const App = () => {
   const dispath = useDispatch()
@@ -18,7 +19,9 @@ export const App = () => {
 
   return (
     <Layout>
-      <LeaderBoardContainer />
+      <Routes>
+        <Route path="/" element={<LeaderBoardContainer />}/>
+      </Routes>
     </Layout>
   )
 }

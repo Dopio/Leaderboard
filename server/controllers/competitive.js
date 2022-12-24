@@ -68,7 +68,7 @@ const addStudent = (db) => async (req, res) => {
 }
 
 export default (app, db) => {
-  app.post('/competitive', create(db))
+  app.post('/competitive/create', create(db))
   app.get('/competitive', getAll(db))
   app.get('/competitive/:id', getOne(db))
   app.delete('/competitive/:id', remove(db))

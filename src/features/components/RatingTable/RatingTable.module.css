@@ -1,0 +1,9 @@
+.whiteBox {
+  background-color: white;
+  border-radius: 15px;
+  padding: 14px 20px;
+}
+
+.ratingTable__wrapper {
+  height: 60vh;
+}

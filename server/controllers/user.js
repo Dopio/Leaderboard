@@ -30,7 +30,7 @@ const login = (db) => async (req, res) => {
 
   if (!user) {
     return res.status(400).json({
-      message: 'Не удалось авторизоваться'
+      message: 'Неудалось авторизоваться'
     })
   }
 
@@ -104,7 +104,7 @@ const update = (db) => async (req, res) => {
 }
 
 export default (app, db) => {
-  app.post('/user', registrate(db))
+  app.post('/user/registration', registrate(db))
   app.post('/user/login', login(db))
   app.get('/user', getAll(db))
   app.get('/user/:id', getOne(db))

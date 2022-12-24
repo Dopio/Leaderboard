@@ -1,19 +1,46 @@
 import React from 'react'
-import classes from '../../containers/LeaderBoardContainer/LeaderBoardContainer.module.css'
+import classes from './RatingTable.module.css'
+import { DataGrid } from '@mui/x-data-grid'
 
-import { Header } from './Header/Header'
-import { Student } from './Student/Student'
+export const RatingTable = () => {
+  const columns = [
+    {
+      field: 'firstName',
+      headerName: 'Ученик',
+      width: 150,
+      editable: true
+    },
+    {
+      field: 'points',
+      headerName: 'Баллы',
+      type: 'number',
+      width: 110,
+      editable: true
+    }
+  ]
+  const rows = [
+    { id: 1, lastName: 'Snow', firstName: 'Jon', points: 35 },
+    { id: 2, lastName: 'Lannister', firstName: 'Cersei', points: 42 }
+  ]
 
-export const RatingTable = ({ competitives }) => {
+  /*   const handleDeleteRow = (ids) => {
+
+  } */
+
   return (
-        <div className={classes.whiteBox}>
-            <div className={classes.ratingTable__wrapper}>
-                <Header competitives={competitives} />
-                <Student rating={89} />
-                <Student rating={67} />
-                <Student rating={16} />
-
-            </div>
-        </div>
+    <div className={classes.ratingTable__wrapper}>
+      <DataGrid
+        rows={rows}
+        columns={columns}
+        pageSize={5}
+        rowsPerPageOptions={[5]}
+        checkboxSelection
+        disableSelectionOnClick
+        experimentalFeatures={{ newEditingApi: true }}
+      /* onSelectionModelChange={(ids) => {
+        handleDeleteRow(ids)
+      }} */
+      />
+    </div>
   )
 }

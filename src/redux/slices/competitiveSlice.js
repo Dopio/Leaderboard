@@ -12,7 +12,7 @@ export const fetchRemoveCompetitive = createAsyncThunk('/competitives/fetchRemov
 
 const initialState = {
   competitives: {
-    items: [],
+    items: ['Math', 'Algebra'],
     status: 'loading'
   }
 }

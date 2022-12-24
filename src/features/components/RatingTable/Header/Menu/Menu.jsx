@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { useSelector } from 'react-redux'
+import { Link } from 'react-router-dom'
 import { selectIsAuth } from '../../../../../redux/slices/authSlice'
 
 import classes from './Menu.module.css'
@@ -8,9 +9,10 @@ import { EditBtn } from './MenuButtons/EditBtn'
 
 export const Menu = ({ competitives }) => {
   const isAuth = useSelector(selectIsAuth)
+  const competitiveList = ['math', 'algebra']
 
   /* const [firstCompetitiveTitle] = competitives.items */
-  const [competition, setCompetition] = useState(/* firstCompetitiveTitle.competitiveTitle */'aa')
+  const [competition, setCompetition] = useState(competitiveList[0])
 
   const [active, setActive] = useState(false)
 
@@ -28,26 +30,26 @@ export const Menu = ({ competitives }) => {
       </button>
       {active && (
         <div className={classes.menu__content}>
-          {competitives.items.map((obj, index) =>
+          {competitiveList.map((competitive) =>
             <div
-              key={obj._id}
+              key={competitive}
               className={classes.menu__brand}
-              onClick={() => { competitionHandler(obj.competitiveTitle) }}
+              onClick={() => { competitionHandler(competitive) }}
             >
               <div className={classes.comtetition_wrapper}>
                 <div className={classes.comtetition_title}>
-                  {obj.competitiveTitle}
+                  <Link to={`/${competitive}`}>{competitive}</Link>
                 </div>
-                <div className={classes.comtetition_data}>
-                  {obj.competitiveData}
-                </div>
+                {/* <div className={classes.comtetition_data}>
+                  {competitive.competitiveData}
+                </div> */}
                 {isAuth
                   ? <>
                     <div className={classes.edit_button}>
                       <EditBtn />
                     </div>
                     <div className={classes.delete_button}>
-                      <DeleteBtn objId={obj._id} />
+                      <DeleteBtn competitiveId={competitive} />
                     </div>
                   </>
                   : <></>
